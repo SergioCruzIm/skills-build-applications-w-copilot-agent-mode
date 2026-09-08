@@ -7,7 +7,10 @@ import Workouts from './components/Workouts.jsx'
 import { apiBaseUrl } from './api.js'
 import './App.css'
 
-const apiLocation = apiBaseUrl.startsWith('https://') ? 'Codespaces / live data' : 'Local API / live data'
+const codespaceConfigured = Boolean(import.meta.env.VITE_CODESPACE_NAME?.trim())
+const apiLocation = codespaceConfigured && apiBaseUrl.startsWith('https://')
+  ? 'Codespaces / live data'
+  : 'Local API / live data'
 
 const navigation = [
   { label: 'Overview', path: '/' },

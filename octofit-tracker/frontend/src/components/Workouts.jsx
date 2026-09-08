@@ -7,7 +7,7 @@ function Workouts() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    fetchCollection('workouts')
+    fetchCollection('/api/workouts/')
       .then(setWorkouts)
       .catch((reason) => setError(reason.message))
       .finally(() => setLoading(false))

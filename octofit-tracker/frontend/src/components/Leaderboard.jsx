@@ -7,7 +7,7 @@ function Leaderboard() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    fetchCollection('leaderboard')
+    fetchCollection('/api/leaderboard/')
       .then(setEntries)
       .catch((reason) => setError(reason.message))
       .finally(() => setLoading(false))

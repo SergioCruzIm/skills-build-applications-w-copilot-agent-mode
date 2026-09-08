@@ -7,7 +7,7 @@ function Teams() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    fetchCollection('teams')
+    fetchCollection('/api/teams/')
       .then(setTeams)
       .catch((reason) => setError(reason.message))
       .finally(() => setLoading(false))

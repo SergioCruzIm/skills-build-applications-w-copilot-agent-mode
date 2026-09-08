@@ -4,8 +4,9 @@ export const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000'
 
-export function apiUrl(component) {
-  return `${apiBaseUrl}/api/${component}/`
+export function apiUrl(endpoint) {
+  const path = endpoint.startsWith('/api/') ? endpoint : `/api/${endpoint}/`
+  return `${apiBaseUrl}${path.endsWith('/') ? path : `${path}/`}`
 }
 
 function collectionFrom(payload) {

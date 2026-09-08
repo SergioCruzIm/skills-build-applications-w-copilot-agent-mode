@@ -6,6 +6,7 @@ import './index.css'
 import App from './App.jsx'
 
 const rootElement = document.getElementById('root')
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 if (!rootElement) {
   throw new Error('The React root element is missing.')
@@ -13,7 +14,7 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename}>
       <App />
     </BrowserRouter>
   </StrictMode>,
