@@ -3,8 +3,8 @@
 ## API configuration
 
 Create `.env.local` in this directory and define the required
-`VITE_CODESPACE_NAME` variable with the Codespaces name when using the hosted
-backend:
+`VITE_CODESPACE_NAME` variable with the Codespaces name. Vite exposes this
+variable through `import.meta.env`:
 
 ```bash
 VITE_CODESPACE_NAME=your-codespace-name

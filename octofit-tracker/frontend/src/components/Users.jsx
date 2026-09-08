@@ -13,7 +13,7 @@ function Users() {
       .finally(() => setLoading(false))
   }, [])
   return <DataPage eyebrow="The community" title="Know your crew." description="Everyone making the tracker more than a number.">
-    {error ? <ErrorMessage message={error} /> : loading ? <LoadingMessage /> : users.length === 0 ? <EmptyMessage /> : <div className="user-grid">{users.map((user) => <article className="user-card" key={user._id}><span className="avatar avatar--large">{user.avatar ?? user.name?.slice(0, 2)}</span><h2>{user.name}</h2><p>{user.email}</p></article>)}</div>}
+    {error ? <ErrorMessage message={error} /> : loading ? <LoadingMessage /> : users.length === 0 ? <EmptyMessage /> : <div className="user-grid">{users.map((user, index) => <article className="user-card" key={user._id ?? index}><span className="avatar avatar--large">{user.avatar ?? user.name?.slice(0, 2) ?? '??'}</span><h2>{user.name ?? 'Unnamed user'}</h2><p>{user.email ?? 'No email provided'}</p></article>)}</div>}
   </DataPage>
 }
 export default Users

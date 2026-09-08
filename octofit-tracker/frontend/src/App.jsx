@@ -4,7 +4,10 @@ import Leaderboard from './components/Leaderboard.jsx'
 import Teams from './components/Teams.jsx'
 import Users from './components/Users.jsx'
 import Workouts from './components/Workouts.jsx'
+import { apiBaseUrl } from './api.js'
 import './App.css'
+
+const apiLocation = apiBaseUrl.startsWith('https://') ? 'Codespaces / live data' : 'Local API / live data'
 
 const navigation = [
   { label: 'Overview', path: '/' },
@@ -61,7 +64,7 @@ function App() {
             </NavLink>
           ))}
         </nav>
-        <div className="sidebar-foot"><span className="status-dot" />API connected<br /><small>Port 8000 / live data</small></div>
+        <div className="sidebar-foot"><span className="status-dot" />API connected<br /><small>{apiLocation}</small></div>
       </aside>
       <main className="content">
         <Routes>

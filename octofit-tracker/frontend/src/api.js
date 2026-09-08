@@ -12,7 +12,7 @@ function collectionFrom(payload) {
   if (Array.isArray(payload)) return payload
   if (!payload || typeof payload !== 'object') return []
 
-  for (const key of ['data', 'results', 'items', 'docs']) {
+  for (const key of ['data', 'results', 'items', 'docs', 'records']) {
     if (key in payload) return collectionFrom(payload[key])
   }
 

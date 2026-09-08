@@ -14,7 +14,7 @@ function Activities() {
   }, [])
 
   return <DataPage eyebrow="Activity log" title="Every rep adds up." description="Recent movement across the OctoFit community.">
-    {error ? <ErrorMessage message={error} /> : loading ? <LoadingMessage /> : activities.length === 0 ? <EmptyMessage /> : <div className="table-wrap"><table><thead><tr><th>Athlete</th><th>Type</th><th>Duration</th><th>Points</th><th>Date</th></tr></thead><tbody>{activities.map((activity) => <tr key={activity._id}><td className="strong">{activity.user?.name ?? activity.user}</td><td><span className="tag">{activity.type}</span></td><td>{activity.durationMinutes} min</td><td className="points">+{activity.points}</td><td>{new Date(activity.performedAt).toLocaleDateString()}</td></tr>)}</tbody></table></div>}
+    {error ? <ErrorMessage message={error} /> : loading ? <LoadingMessage /> : activities.length === 0 ? <EmptyMessage /> : <div className="table-wrap"><table><thead><tr><th>Athlete</th><th>Type</th><th>Duration</th><th>Points</th><th>Date</th></tr></thead><tbody>{activities.map((activity, index) => <tr key={activity._id ?? index}><td className="strong">{activity.user?.name ?? activity.user ?? 'Unknown athlete'}</td><td><span className="tag">{activity.type ?? 'Activity'}</span></td><td>{activity.durationMinutes ?? 0} min</td><td className="points">+{activity.points ?? 0}</td><td>{activity.performedAt ? new Date(activity.performedAt).toLocaleDateString() : '—'}</td></tr>)}</tbody></table></div>}
   </DataPage>
 }
 

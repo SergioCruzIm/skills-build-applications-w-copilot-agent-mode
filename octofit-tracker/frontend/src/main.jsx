@@ -7,6 +7,10 @@ import App from './App.jsx'
 
 const rootElement = document.getElementById('root')
 
+if (!rootElement) {
+  throw new Error('The React root element is missing.')
+}
+
 createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
